@@ -1,0 +1,54 @@
+Project Context: Titanic Exploratory Data Analysis (EDA)
+
+**1. Project Background & Objective**
+
+The sinking of the RMS Titanic on April 15, 1912, remains one of history’s most infamous maritime disasters. Following a collision with an iceberg on her maiden voyage, 1,502 out of 2,224 passengers and crew perished due to a catastrophic lack of lifeboats. While survival involved elements of chance, historical records suggest systemic patterns influenced passenger outcomes.
+
+This project focuses on a r Exploratory Data Analysis (EDA) of the Titanic passenger dataset. The primary objective is to analyze socio-demographic, economic, and age-related drivers of survival, laying the analytical foundation for future predictive modeling.The core objectives of this analysis are:
+
+- To evaluate dataset dimensions, column data types, missing value structures, and baseline summary statistics across 12 passenger attributes.
+- To formulate and statistically test three primary survival hypotheses centered around Passenger Class (Pclass), Gender (Sex), and Age (Age).
+- To quantify linear and non-linear intercorrelations between numerical variables using a Pearson correlation matrix.
+- To apply visualization techniques (percentage-formatted bar charts, stacked histograms, Kernel Density Estimation curves) that isolate demographic survival patterns.
+
+
+**2. Dataset Scope & Dimensions**
+
+- Observations (Rows): 891 passenger records in the training set (train.csv).
+- Features (Columns): 12 variables (7 numerical metrics and 5 categorical/alphanumeric attributes).
+- Target Variable: Survived (Binary metric: 0 = No, 1 = Yes).
+- Global Survival Baseline: Overall passenger survival rate is 38.38% (342 survivors) versus a 61.62% mortality rate (549 deceased).
+
+
+**3. Key Analytical Findings**
+
+- Gender Discrepancy (Primary Survival Driver): Gender proved to be the single strongest predictor of survival. Females achieved an overall survival rate of 74.20%, compared to only 18.89% for males, directly reflecting maritime "women and children first" evacuation protocols.
+
+- Socio-Economic Stratification (Pclass & Fare): Survival rates displayed a steep linear decline from upper to lower socio-economic tiers: Class 1 (62.96%), Class 2 (47.28%), and Class 3 (24.23%). This is corroborated by a negative linear correlation between Pclass and Survived ($r = -0.34$) and a positive correlation between ticket Fare and Survived ($r = 0.26$).
+
+- Class-Gender Interaction: Socio-economic privilege significantly magnified female survival rates: Class 1 and Class 2 females survived at 96.80% and 92.10% respectively, whereas Class 3 female survival dropped drastically to 50.00%.
+
+- Non-Linear Age Distribution: The overall linear correlation between Age and Survived is negligible ($r = -0.08$). However, Kernel Density Estimation (KDE) and stacked histograms revealed significant non-linear age concentrations: infants and young children (ages 0–5) showed an elevated survival peak, while the 20–40 age bracket accounted for the highest density of fatalities.
+
+-Missing Data Rationalization: Quantification identified missing values in Cabin (687 missing, 77.1%), Age (177 missing, 19.9%), and Embarked (2 missing, 0.2%). Cabin missingness reflects structural non-assignment for lower-class ticket holders rather than collection errors.
+
+
+
+4. Repository Structure
+
+In accordance with standard data engineering and course requirements, the project repository is organized into distinct functional directories:.
+├── Data/
+│   └── train.csv                 # Raw Titanic passenger dataset
+├── Src/
+│   └── eda_titanic_notebook.ipynb# Data cleaning, visualization scripts, and EDA logic
+├── Docs/
+│   ├── project_context.md        # Formal project background and scope (this document)
+│   ├── Executive_Summary.pdf     # One-page executive summary report for stakeholders
+│   └── data_dictionary.xlsx     # Standardized variable data dictionary with keys
+└──Results/
+    ├── hypothesis_class_survival_percentage.png
+    ├── hypothesis_class_survival_and_sex.png
+    ├── hypothesis_survival_rates_by_gender.png
+    ├── Age_Distribution_Density.png
+    ├── hypothesis_age_survival.png
+    └── correlation_matrix.png     # Exported high-resolution figures and correlation heatmaps
